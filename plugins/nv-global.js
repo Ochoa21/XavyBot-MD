@@ -302,14 +302,6 @@ handler.all = async function(m, {conn}) {
     mconn.conn.sendMessage(m.chat, {audio: {url: vn}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: m});
   }
 
-  if (!chat.isBanned && m.text.match(/(fiesta viernes|viernes|Viernes|viernes fiesta)/gi)) {
-    if (!db.data.chats[m.chat].audios) return;
-    if (!db.data.settings[this.user.jid].audios_bot && !m.isGroup) return;
-    const vn = './src/assets/audio/01J674CES8KMWCBT6B9E597MFF.mp3';
-    mconn.conn.sendPresenceUpdate('recording', m.chat);
-    mconn.conn.sendMessage(m.chat, {audio: {url: vn}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: m});
-  }
-
   if (!chat.isBanned && m.text.match(/(vivan!!|vivan los novios|vivanlosnovios)/gi)) {
     if (!db.data.chats[m.chat].audios) return;
     if (!db.data.settings[this.user.jid].audios_bot && !m.isGroup) return;
@@ -349,7 +341,40 @@ handler.all = async function(m, {conn}) {
     mconn.conn.sendPresenceUpdate('recording', m.chat);
     mconn.conn.sendMessage(m.chat, {audio: {url: vn}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: m});
   }
-  
+
+  if (!chat.isBanned && m.text.match(/(XD|xD|Xd|xd)/gi)) {
+    if (!db.data.chats[m.chat].audios) return;
+    if (!db.data.settings[mconn.conn.user.jid].audios_bot && !m.isGroup) return;
+    const vn = './src/assets/audio/xd.mp3';
+    mconn.conn.sendPresenceUpdate('recording', m.chat);
+    mconn.conn.sendMessage(m.chat, {audio: {url: vn}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: m});
+  }
+
+  if (!chat.isBanned && m.text.match(/(Miercoles|miercoles|MIERCOLES|Miércoles|miércoles)/gi)) {
+    if (!db.data.chats[m.chat].audios) return;
+    if (!db.data.settings[mconn.conn.user.jid].audios_bot && !m.isGroup) return;
+    const vn = './src/assets/audio/miercoles.mp3';
+    mconn.conn.sendPresenceUpdate('recording', m.chat);
+    mconn.conn.sendMessage(m.chat, {audio: {url: vn}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: m});
+  }
+
+  if (!chat.isBanned && m.text.match(/(Burro|burro|BURRO)/gi)) {
+    if (!db.data.chats[m.chat].audios) return;
+    if (!db.data.settings[mconn.conn.user.jid].audios_bot && !m.isGroup) return;
+    const vn = './src/assets/audio/burro.mp3';
+    mconn.conn.sendPresenceUpdate('recording', m.chat);
+    mconn.conn.sendMessage(m.chat, {audio: {url: vn}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: m});
+  }
+
+  if (/^xd|Xd|xD|XD$/i.test(m.text) && !chat.isBanned) {
+    const sticker = './src/assets/audio/burro.webp';
+    mconn.conn.sendMessage(m.chat, { sticker: fs.readFileSync(sticker) }, { quoted: m });
+  }
+
+  if (/^viernes|viernes|Viernes|viernes$/i.test(m.text) && !chat.isBanned) {
+    const sticker = './src/assets/audio/viernes.webp';
+    mconn.conn.sendMessage(m.chat, { sticker: fs.readFileSync(sticker) }, { quoted: m });
+  }
 
   return !0;
 };

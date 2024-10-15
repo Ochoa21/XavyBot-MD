@@ -21,11 +21,13 @@ export async function before(m, {conn, isAdmin, isBotAdmin, text}) {
       const linkThisGroup3 = `https://youtu.be/`;
       const linkThisGroup4 = `https://instagram.com/`
       const linkThisGroup5 = `https://whatsapp.com/channel/`
+      const linkThisGroup6 = `instagram.com`
       if (m.text.includes(linkThisGroup)) return !0;
       if (m.text.includes(linkThisGroup2)) return !0;
       if (m.text.includes(linkThisGroup3)) return !0;
       if (m.text.includes(linkThisGroup4)) return !0;
       if (m.text.includes(linkThisGroup5)) return !0;
+      if (m.text.includes(linkThisGroup6)) return !0;
     }
     await this.sendMessage(m.chat, {text: tradutor.texto1, mentions: [m.sender]}, {quoted: m});
     if (!isBotAdmin) return m.reply(tradutor.texto2);
